@@ -1,0 +1,129 @@
+NAME=libft.a
+
+SRCS_F= ft_memset.c ft_bzero.c ft_memcpy.c \
+		ft_memccpy.c ft_memmove.c ft_memchr.c \
+		ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c \
+		ft_strncpy.c ft_strcat.c ft_strncat.c \
+		ft_strlcat.c ft_strchr.c ft_strrchr.c \
+		ft_strstr.c ft_strnstr.c ft_strcmp.c \
+		ft_strncmp.c ft_atoi.c ft_isdigit.c \
+		ft_islower.c ft_isupper.c ft_isalpha.c \
+		ft_isalnum.c ft_isascii.c ft_isprint.c \
+		ft_toupper.c ft_tolower.c \
+		\
+		ft_memalloc.c ft_memdel.c ft_strnew.c \
+		ft_strdel.c ft_strclr.c ft_striter.c \
+		ft_striteri.c ft_strmap.c ft_strmapi.c \
+		ft_strequ.c ft_strnequ.c ft_strsub.c\
+		ft_strjoin.c ft_strtrim.c ft_strsplit.c\
+		ft_itoa.c \
+		ft_putchar.c ft_putstr.c ft_putendl.c\
+		ft_putnbr.c ft_putchar_fd.c ft_putstr_fd.c\
+		ft_putendl_fd.c ft_putnbr_fd.c\
+		ft_lstnew.c ft_lstdelone.c ft_lstdel.c\
+		ft_lstadd.c ft_lstiter.c ft_lstmap.c\
+		\
+		ft_strwords.c ft_fda.c ft_strtolower.c\
+		ft_strtoupper.c ft_strcapitalize.c\
+		\
+		ft_treenew.c ft_treeadd.c ft_treedel.c\
+		ft_treepretrav.c ft_treepostrav.c ft_treeintrav.c\
+
+OBJ = $(SRCS_F:.c=.o) 
+
+%.o: %.c
+	gcc -Wall -Wextra -Werror -c -o $@ $<
+
+all: $(NAME)
+
+$(NAME): $@ $(OBJ)
+	gcc -Wall -Wextra -Werror -c $(SRCS_F)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
+
+clean:
+	rm -Rf $(SRCS_F:.c=.o)
+
+fclean: clean
+	rm -Rf $(NAME)
+
+re: fclean $(NAME)
+
+DIR_F=tests/first_part
+DIR_F2=tests/second_part
+DIR_F3=tests/third_part
+DIR_Fmy=tests/myfuncs
+testrrr:
+	gcc -g $(DIR_Fmy)/lstnew/test.c $(SRCS_F)
+	./a.out
+
+testmyfuncs:
+
+test2:
+	@cat $(DIR_F2)/text
+	@gcc $(DIR_F2)/memalloc/test.c -L. -lft
+	@./a.out
+
+
+	@ggcc $(DIR_F2)/itoa/test.c -L. -lft
+	@g./a.out
+	@ggcc $(DIR_F2)/strsplit/test.c -L. -lft
+	@g./a.out
+
+test1:
+	@cat $(DIR_F)/text
+	@gcc $(DIR_F)/memset/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/bzero/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/memcpy/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/memccpy/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/memmove/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/memchr/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/memcmp/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/strlen/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/strdup/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/strcpy/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/strncpy/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/strcat/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/strncat/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/strlcat/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/strchr/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/strstr/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/strnstr/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/strcmp/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/strncmp/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/atoi/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/isalpha/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/isdigit/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/isalnum/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/isascii/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/isprint/test.c -L. -lft
+	@./a.out
+	@gcc $(DIR_F)/toupper/test.c -L. -lft
+	@./a.out	
+	@gcc $(DIR_F)/tolower/test.c -L. -lft
+	@./a.out
+	
